@@ -6,4 +6,5 @@ import images
 
 filename = askopenfilename()
 im = Image.open(filename).convert('RGB')
-images.imageAnalizer(im,20)
+numberOfGroups = int(input("Ingresar numero de grupos para discretizar \n"))
+nodeMatrix = images.imageAnalizer(im,numberOfGroups)

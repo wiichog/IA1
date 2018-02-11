@@ -1,12 +1,26 @@
 from abc import ABC, abstractmethod
 
-class AbstractOperation(ABC):
+class frameWork(ABC):
  
-    def __init__(self, operand_a, operand_b):
-        self.operand_a = operand_a
-        self.operand_b = operand_b
-        super(AbstractOperation, self).__init__()
+    def __init__(self, matrix):
+        self.matrix = matrix
     
     @abstractmethod
-    def execute(self):
+    def actions(self,s):
+        pass
+
+    @abstractmethod
+    def result(self,s,a):
+        pass
+
+    @abstractmethod
+    def goalTest(self,s):
+        pass
+
+    @abstractmethod
+    def stepCost(self,s,a,s2):
+        pass
+
+    @abstractmethod
+    def pathCost(self,statesList):
         pass
