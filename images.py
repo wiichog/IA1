@@ -11,11 +11,15 @@ def imageAnalizer(image,number):
     xMatrix = []
     yMatrix = []
     for x in range(0,width,number):
-        newX += number
+        newX += number 
         for y in range(0,height,number):
-            newY+= number
-            xMatrix.append(node(discretizeImage(image.crop((x,y,newX,newY))),False))
-            #xMatrix.append(discretizeImage(image.crop((x,y,newX,newY)))) #if you want to see the discretized image descomment line 18 and 22
+            newY+= number 
+            if(discretizeImage(image.crop((x,y,newX,newY)))==(255,0,0)):
+                xMatrix.append(node(discretizeImage(image.crop((x,y,newX,newY))),False,True))
+                #xMatrix.append(discretizeImage(image.crop((x,y,newX,newY))))
+            else:
+                xMatrix.append(node(discretizeImage(image.crop((x,y,newX,newY))),False,False))
+                #xMatrix.append(discretizeImage(image.crop((x,y,newX,newY)))) #if you want to see the discretized image descomment line 18 and 22
         yMatrix.append(xMatrix[:])
         xMatrix.clear()
         newY = 0
@@ -52,5 +56,11 @@ def classifier(pixel):
         else:
             return (r,g,b)
 
+
+def getInitial(matrix):
+    for nodeList in matrix:
+        for node in nodeList:
+            if(node.initial):                
+                return node
 
 

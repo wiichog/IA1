@@ -1,26 +1,55 @@
-from abc import ABC, abstractmethod
+class frameWork():
 
-class frameWork(ABC):
- 
-    def __init__(self, matrix):
+    def __init__(self, matrix,initial,type):
         self.matrix = matrix
-    
-    @abstractmethod
+        self.initial = initial
+        self.type = type
+        self.cost =  0
+
     def actions(self,s):
-        pass
+        x = s.x
+        y = s.y
+        actions = []
+        try:
+            if (self.matrix[x][y+1].color==(255,255,255) or self.matrix[x][y+1].color==(255,0,0)  or self.matrix[x][y+1].color==(0,255,0)):
+                actions.append("abajo")
+        except IndexError:
+            pass
+        try:
+            if (self.matrix[x][y-1].color==(255,255,255) or self.matrix[x][y-1].color==(255,0,0) or self.matrix[x][y-1].color==(0,255,0)):
+                actions.append("arriba")
+        except IndexError:
+            pass
+        try:
+            if (self.matrix[x-1][y].color==(255,255,255) or self.matrix[x-1][y].color==(255,0,0) or self.matrix[x-1][y].color==(0,255,0)):
+                actions.append("izquierda")
+        except IndexError:
+            pass
+        try:
+            if (self.matrix[x+1][y].color==(255,255,255) or self.matrix[x+1][y].color==(255,0,0) or self.matrix[x+1][y].color==(0,255,0)):
+                actions.append("derecha")
+        except IndexError:
+            pass
+        return actions
 
-    @abstractmethod
     def result(self,s,a):
-        pass
+        x = s.x
+        y = s.y
+        if(a=="arriba"):
+            return [self.matrix[x][y-1]]
+        if(a=="abajo"):
+            return [self.matrix[x][y+1]]
+        if(a=="derecha"):
+            return [self.matrix[x+1][y]]
+        if(a=="izquierda"):
+            return [self.matrix[x-1][y]]
 
-    @abstractmethod
     def goalTest(self,s):
-        pass
+        if(s.color==(0,255,0)): return True
+        return False
 
-    @abstractmethod
     def stepCost(self,s,a,s2):
-        pass
+        self.cost += 1
 
-    @abstractmethod
     def pathCost(self,statesList):
-        pass
+        return self.cost
