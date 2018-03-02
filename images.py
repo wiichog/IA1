@@ -63,6 +63,14 @@ def getInitial(matrix):
             if(node.initial):                
                 return node
 
+def getGoal(matrix):
+    goals = []
+    for nodeList in matrix:
+        for node in nodeList:
+            if(node.color==(0,255,0)):                
+                goals.append(node)
+    return goals
+
 def saveImage(matrix,path):
     for node in path:
         x = node.x

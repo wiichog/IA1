@@ -1,6 +1,6 @@
 from tkinter.filedialog import askopenfilename
 from PIL import Image
-from images import imageAnalizer,getInitial,saveImage
+from images import imageAnalizer,getInitial,saveImage,getGoal
 from solutions import graph_search
 import fw
 
@@ -12,13 +12,13 @@ newMatrix = imageAnalizer(im,numberOfGroups)
 
 numberOfProblem = int(input("Que tipo de problema desea? 1,2,3,4 \n"))
 if(numberOfProblem==1):
-    fw = fw.frameWork(newMatrix,getInitial(newMatrix),1)
+    fw = fw.frameWork(newMatrix,getInitial(newMatrix),getGoal(newMatrix),1)
 elif(numberOfProblem==2):
-    fw = fw.frameWork(newMatrix,getInitial(newMatrix),2)
+    fw = fw.frameWork(newMatrix,getInitial(newMatrix),getGoal(newMatrix),2)
 elif(numberOfProblem==3):
-    fw = fw.frameWork(newMatrix,getInitial(newMatrix),3)
+    fw = fw.frameWork(newMatrix,getInitial(newMatrix),getGoal(newMatrix),3)
 elif(numberOfProblem==4):
-    fw = fw.frameWork(newMatrix,getInitial(newMatrix),4)
+    fw = fw.frameWork(newMatrix,getInitial(newMatrix),getGoal(newMatrix),4)
 
 saveImage(newMatrix,graph_search(fw))
 

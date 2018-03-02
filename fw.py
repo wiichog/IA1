@@ -1,10 +1,11 @@
 class frameWork():
 
-    def __init__(self, matrix,initial,type):
+    def __init__(self, matrix,initial,goal,type):
         self.matrix = matrix
         self.initial = initial
         self.type = type
         self.cost =  0
+        self.goal = goal
 
     def actions(self,s):
         x = s.x
@@ -47,11 +48,11 @@ class frameWork():
             return [self.matrix[x-1][y]]
 
     def goalTest(self,s):
-        if(s.color==(0,255,0)): return True
+        if(s in self.goal): return True
         return False
 
     def stepCost(self,s,a,s2):
         self.cost += 1
 
     def pathCost(self,statesList):
-        return self.cost
+        return len(statesList)
