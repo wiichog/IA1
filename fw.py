@@ -17,12 +17,14 @@ class frameWork():
             pass
         try:
             if (self.matrix[x][y-1].color==(255,255,255) or self.matrix[x][y-1].color==(255,0,0) or self.matrix[x][y-1].color==(0,255,0)):
-                actions.append("arriba")
+                if(y-1<0): pass 
+                else: actions.append("arriba")
         except IndexError:
             pass
         try:
             if (self.matrix[x-1][y].color==(255,255,255) or self.matrix[x-1][y].color==(255,0,0) or self.matrix[x-1][y].color==(0,255,0)):
-                actions.append("izquierda")
+                if(x-1<0): pass 
+                else: actions.append("izquierda")
         except IndexError:
             pass
         try:

@@ -9,6 +9,7 @@ def graph_search(problem):
                     path = remove_choiseDFS(frontier)
                 elif(problem.type ==3):
                     path = remove_choiseDFS(frontier)
+                
                 s = path[-1]
                 explored.append(s)
                 if(problem.goalTest(s)):

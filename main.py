@@ -1,6 +1,6 @@
 from tkinter.filedialog import askopenfilename
 from PIL import Image
-from images import imageAnalizer,getInitial
+from images import imageAnalizer,getInitial,saveImage
 from solutions import graph_search
 import fw
 
@@ -20,9 +20,5 @@ elif(numberOfProblem==3):
 elif(numberOfProblem==4):
     fw = fw.frameWork(newMatrix,getInitial(newMatrix),4)
 
-path = graph_search(fw)
-for node in path:
-    print("-----------------------------------------")
-    print("(",node.x,",",node.y,")")
-    print("-----------------------------------------")
+saveImage(newMatrix,graph_search(fw))
 

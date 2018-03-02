@@ -63,4 +63,11 @@ def getInitial(matrix):
             if(node.initial):                
                 return node
 
+def saveImage(matrix,path):
+    for node in path:
+        x = node.x
+        y = node.y
+        matrix[x][y].color = (0,0,255)
+    scipy.misc.imsave('solucion.png', np.asarray([[node.color for node in line] for line in matrix]))
+
 
