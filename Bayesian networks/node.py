@@ -26,7 +26,7 @@ class node(object):
     def getNumberOfEquations(self):
         return (2**self.numberOfEquations)
     
-    def setEquations(self,NP):
+    def setEquations(self):
         if(self.independent):
             self.positiveEquations.append(self.name)
             self.negativeEquations.append("!"+self.name)
@@ -45,5 +45,7 @@ class node(object):
                         negativeEcuation+= "!"+dependencies[i]+","
                 self.positiveEquations.append(positiveEcuation[:-1])
                 self.negativeEquations.append(negativeEcuation[:-1])
+
+    def getEquations(self,NP):
         if(NP==1): return self.positiveEquations
         else: return self.negativeEquations
